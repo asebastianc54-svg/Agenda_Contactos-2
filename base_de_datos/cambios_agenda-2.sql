@@ -1,0 +1,22 @@
+USE agenda_db;
+
+ALTER TABLE contacto
+    ADD COLUMN CuilCuit VARCHAR(20) NULL,
+    ADD COLUMN FechaAlta DATE NULL,
+    ADD COLUMN EstadoCivil VARCHAR(50) NULL,
+    ADD COLUMN Nacionalidad VARCHAR(80) NULL,
+    ADD COLUMN Provincia VARCHAR(100) NULL,
+    ADD COLUMN CodigoPostal VARCHAR(20) NULL,
+    ADD COLUMN Barrio VARCHAR(100) NULL,
+    ADD COLUMN TelefonoAlternativo VARCHAR(30) NULL,
+    ADD COLUMN RedSocialInstagram VARCHAR(120) NULL,
+    ADD COLUMN ProfesionOcupacion VARCHAR(120) NULL,
+    ADD COLUMN EmpresaLugarTrabajo VARCHAR(150) NULL,
+    ADD COLUMN NivelEstudios VARCHAR(100) NULL,
+    ADD COLUMN Estado VARCHAR(10) NOT NULL DEFAULT 'ACTIVO',
+    ADD COLUMN MetodoPagoPreferido VARCHAR(80) NULL,
+    ADD COLUMN Observaciones TEXT NULL;
+
+UPDATE contacto SET FechaAlta = CURRENT_DATE WHERE FechaAlta IS NULL;
+
+ALTER TABLE contacto MODIFY COLUMN FechaAlta DATE NOT NULL;
